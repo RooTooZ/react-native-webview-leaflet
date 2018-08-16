@@ -12,7 +12,7 @@ import Button from './Button';
 
 const isValidCoordinates = require('is-valid-coordinates');
 const uniqby = require('lodash.uniqby');
-const INDEX_FILE = require(`./assets/dist/index.html`);
+// const INDEX_FILE = require(`./assets/dist/index.html`);
 // const INDEX_FILE ={uri: 'https://github.com/facebook/react-native'};
 const MESSAGE_PREFIX = 'react-native-webview-leaflet';
 // const index = Expo.Asset.fromModule(require('./assets/dist/index.html')).uri
@@ -140,7 +140,7 @@ export default class WebViewLeaflet extends React.Component {
             ref={(ref) => {
               this.webview = ref;
             }}
-            source={INDEX_FILE}
+            source={{uri: 'file:///android_asset/index_map.html'}}
             onLoadEnd={this.onWebViewLoaded}
             onMessage={this.handleMessage}
             startInLoadingState={true}
@@ -150,6 +150,7 @@ export default class WebViewLeaflet extends React.Component {
             onError={this.onError}
             scalesPageToFit={false}
             mixedContentMode={'always'}
+            domStorageEnabled={true}
           />
           {this.props.centerButton ? (
             <View
